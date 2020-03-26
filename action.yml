@@ -1,0 +1,35 @@
+name: 'Container Publish'
+description: 'An opinionated GitHub Action to build and publish container images with semver tagging'
+author: 'Daniel Lundin'
+branding:
+  icon: 'box'
+  color: 'blue'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+inputs:
+  buildargs:
+    description: 'Extra arguments to build.'
+    required: false
+  dockerfile:
+    description: 'Explicit path to Dockerfile.'
+    required: false
+  name:
+    description: 'Image name.'
+    required: true
+  password:
+    description: 'Registry password for authentication.'
+    required: true
+  registry:
+    description: 'Registry to pushing container image to.'
+    required: false
+  tag_latest:
+    description: 'Whether a "latest" tag should also be published.'
+    required: false
+    default: 'true'
+  username:
+    description: 'Registry username for authentication.'
+    required: true
+  context:
+    description: 'Use a different directory as context.'
+    required: false
