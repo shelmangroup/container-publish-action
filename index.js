@@ -1,6 +1,7 @@
 const { exec } = require("child_process");
 
-exec( <<"HERE"
+
+var script = `
 /bin/bash -c <EOF
   sudo sh -c "echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/x${ID^}_${VERSION_ID}/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list"
   wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/x${ID^}_${VERSION_ID}/Release.key -O Release.key
@@ -9,8 +10,9 @@ exec( <<"HERE"
   sudo apt-get -qq -y install buildah
 
 EOF
-HERE
-, (error, stdout, stderr) => {
+`;
+
+exec(script, (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
         return;
