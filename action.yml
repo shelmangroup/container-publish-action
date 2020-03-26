@@ -5,8 +5,8 @@ branding:
   icon: 'box'
   color: 'blue'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: 'node12'
+  main: 'index.js'
 inputs:
   buildargs:
     description: 'Extra arguments to build.'
